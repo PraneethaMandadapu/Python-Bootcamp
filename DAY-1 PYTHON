@@ -1,0 +1,130 @@
+1)Printing product of a number
+  n=int(input())
+  pro=1
+  while n>0:
+    rem=n%10
+    pro=pro*rem
+    n=n//10
+  print('The product is: ',pro)
+
+
+2)Printing sum of a number
+  n=int(input())
+  sum=0
+  while n>0:
+    rem=n%10
+    sum=sum+rem
+    n=n//10
+  print('the sum is: ',sum)
+
+
+3)Printing the number of didgits in input
+s=input()
+count=0
+for i in range(0,len(s)):
+    if s[i].isdigit():
+        count=count+1
+print(count)
+
+
+4)Printing whether the string is palindrome or not
+s='malayalam'
+s1=''
+for i in range(len(s)-1,-1,-1):
+    s1+=s[i]
+if(s1==s):
+    print('palindrome')
+else:
+    print('not')
+
+5)Printing number of vowels in a string
+s='praneetha'
+vowels=['a','e','i','o','u']
+count=0
+for c in s:
+    if c in vowels:
+        count+=1
+print(count)
+
+
+6)Printing the odd elements
+data=[1,8,'apple','carrot','mango']
+fruits=['apple','mango','orange','watermelon']
+for i in data:
+    if i not in fruits:
+        print(i)
+
+
+7)Printing odd elements
+data=[1,8,'apple','carrot','mango']
+fruits=['apple','mango','orange','watermelon']
+veggies=['tomato','onion','beans','carrot']
+for i in data:
+    if i in veggies and i not in fruits:
+        print(i)
+
+8)Membership operator
+s='hello'
+s1='hello dear'
+print(s is s1)
+
+
+9)Split function
+s='she is my bf'
+s=s.split()
+print(s)
+
+
+10)split function-2
+s='she is my bf and she is good girl'
+s=s.split()
+print(s.count('is'))
+print(s.count('good'))
+
+
+11)Pseudocode
+n=10
+n1=True
+print(n and n1)
+
+12)user defined function
+def greet():
+    return 'hey there!'
+print(greet())
+
+13)user defined function with parameter
+def greet(branch):
+    return 'hello',branch
+print(greet('a'))
+print(greet('b'))
+print(greet('c'))
+
+
+14)Printing eve/odd using functions
+def check(n):
+    if n%2==0:
+        print('even')
+    else:
+        print('odd')
+print(check(12))
+
+
+15)count numbers divisible by 4,6
+arr=[1,3,36,35,9,24,4,8,0]
+count=0
+for i in arr:
+    if i%4==0 and i%6==0:
+        count=count+1
+print(count)
+
+
+16)count numbers divisible by 4,6 using functions
+def check(arr):
+  count=0
+  for i in arr:
+    if i%4==0 and i%6==0:
+          count=count+1
+  return count
+arr=list(map(int,input().split()))
+print('the count is:',check(arr))
+
