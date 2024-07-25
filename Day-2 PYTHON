@@ -1,0 +1,322 @@
+    LIST
+#LIST : it is a collection of ordered elements
+#LIST is mutable
+SYNTAX :
+    List_name=[obj1,obj2,obj3,........objn]
+
+
+
+operations on a list:
+
+1)Append      #It will add the element at end of the list
+mobiles=['iphones','samsung','vivo']
+mobiles.append('oneplus')
+print(mobiles)
+o/p:['iphones', 'samsung', 'vivo', 'oneplus']
+
+2)Pop         #Only the last one element will pop
+mobiles=['iphones','samsung','vivo']
+mobiles.pop()
+print(mobiles)
+o/p:['iphones', 'samsung']
+
+
+3)Remove
+mobiles=['iphones','samsung','vivo']
+mobiles.remove('iphones')
+print(mobiles)
+o/p: ['samsung', 'vivo']
+
+4)Insert           #Inserts at a user given position
+mobiles=['iphones','samsung','vivo']
+mobiles.insert(0,'oneplus')
+print(mobiles)
+o/p:['oneplus', 'iphones', 'samsung', 'vivo']
+
+5)Clear           #Deletes the whole list
+mobiles=['iphones','samsung','vivo']
+mobiles.clear()
+print(mobiles)
+o/p:[]
+
+
+6)True
+mobiles=['oneplus','samsung','vivo','oppo','poco']
+print(mobiles[True])
+o/p:samsung
+
+7)False
+mobiles=['realme','samsung','vivo','oppo','poco']
+print(mobiles[ not True])
+o/p:realme
+
+8)Printing line wise elements
+mobiles=['oneplus','samsung','vivo','oppo','poco']
+count=1
+for ele in mobiles:
+    print(count,ele)
+    count+=1
+o/p:1 oneplus
+2 samsung
+3 vivo
+4 oppo
+5 poco
+
+
+9)Printing even index elements
+mobiles=['oneplus','samsung','vivo','oppo','poco']
+for i in range(0,len(mobiles)):
+    if i%2==0:
+        print(mobiles[i])
+o/p: oneplus
+vivo
+poco
+
+
+10)reversing even number indexes 
+mobiles=['oneplus','samsung','vivo','oppo','poco']
+for i in range(0,len(mobiles)):
+    if i%2==0:
+        rev=mobiles[i]
+        print(rev[::-1])
+    else:
+        print(mobiles[i])
+o/p:sulpeno
+samsung
+oviv
+oppo
+ocop
+
+
+11)Printing last elements first and first elements last by splitting array into two equal halfs
+arr=[1,2,3,4,5]                                           
+k=4
+first=arr[k-1:]
+second=arr[:k-1]
+first.extend(second)
+print(first)
+
+   (OR)
+
+arr=[1,2,3,4,5]                                           
+k=4
+first=arr[k-1:]                      
+second=arr[:k-1]
+print(first+second)
+o/p:[4,5,1,2,3]
+
+
+12)
+arr=[1,2,3,4,5]
+k=3
+first=arr[k+1:k-(k-1):-1]
+second=arr[:k-1]
+print(first+second)
+o/p:[5,4,3,1,2]
+
+
+13)
+arr=[1,2,3,4,5]
+k=4
+first=arr[k+2:k-(k-2):-1]
+second=arr[:k-1]
+print(first+second)
+o/p:[5,4,1,2,3]
+
+
+
+     TUPLE
+It is a collection of different data elements and is immutable
+SYNTAX :
+    tuple_name=(onj1,on=bj2,.....objn)
+
+
+1)Converting tuple to list(since list doesn't have any functions so we convert tuple to list and perform functions)
+st=(101,'praneetha','cse','hyd')
+st=list(st)
+st[2]='AIML'
+print(st)
+o/p:[101,'praneetha','AIML','hyd']
+
+
+
+     DICTIONARY
+It is a collection of keys and elements
+
+
+
+1)Remove
+menu={
+    'chck_biryani':555,
+    'butter_chicken':450,
+    'Tandoori_chicken':300,
+    'juicy_mandi':400
+    }
+menu.pop('Tandoori_chicken')
+print(menu)
+
+
+
+2)Add
+menu={
+    'chck_biryani':555,
+    'butter_chicken':450,
+    'Tandoori_chicken':300,
+    'juicy_mandi':400
+    }
+menu['fruit_salad']=100
+print(menu)
+{'chck_biryani': 555, 'butter_chicken': 450, 'Tandoori_chicken': 300, 'juicy_mandi': 400, 'fruit_salad': 100}
+
+
+3)count the frequency of each number
+arr=[1,3,6,2,5,3,7,5,1]
+count=0
+d={}
+for key in arr:
+    if key not in d:
+        d[key]=1
+    else:
+        d[key]+=1
+print(d)
+o/p: {1: 2, 3: 2, 6: 1, 2: 1, 5: 2, 7: 1}
+
+
+4)Print unique numbers
+arr=[1,3,6,2,5,3,7,5,1]
+count=0
+num=0
+d={}
+for key in arr:
+    if key not in d:
+        d[key]=1
+    else:
+        d[key]+=1
+for num,count in d.items():
+    if count==1:
+        print(num)
+o/p:
+6
+2
+7
+
+
+5)Print repeated numbers
+arr=[1,3,6,2,5,3,7,5,1]
+count=0
+num=0
+d={}
+for key in arr:
+    if key not in d:
+        d[key]=1
+    else:
+        d[key]+=1
+for num,count in d.items():
+    if count!=1:
+        print(num)
+o/p:
+1
+3
+5
+
+
+6)count valid votes and check which party wins
+cong={7:5,18:22,32:8,71:5,66:6}
+bjp={7:15,18:20,32:4,71:9,66:2}
+cong_sum=0
+bjp_sum=0
+for age,votes in cong.items():
+    if age>=18:
+        cong_sum+=votes
+for age,votes in bjp.items():
+    if age>=18:
+
+        bjp_sum+=votes
+diff=abs(cong_sum-bjp_sum)
+if cong_sum>bjp_sum:
+    print('cong wins',diff)
+else:
+    print('bjp win',diff)
+o/p: cong wins 6
+
+
+7)Factorial of a number
+n=5
+fact=1
+for i in range(1,n+1):
+    fact=fact*i
+print(fact)
+
+
+8)Factorial of a number using user defined functions
+def fact(n):
+    if n==0 or n==1:
+        return 1
+    else:
+        return n*fact(n-1)
+n=int(input())
+print(fact(n))
+
+
+9)
+def sum_of_natural(n):
+    if n==1:
+        return 1
+    else:
+        return n+sum_of_natural(n-1)
+n=int(input())
+print(sum_of_natural(n))
+
+
+10)Fibanocci series
+def fib(n):
+    if n==0 or n==1:
+        return n
+    else:
+        return fib(n-1)+fib(n-2)
+n=int(input())
+print(fib(n))
+
+
+
+11)
+def fib(n):
+    if n==0 or n==1:
+        return n
+    else:
+        return fib(n-1)+fib(n-2)
+n=5
+print(fib(n-1))
+
+12)Print how many combinations can we form with 2,4,8 in range of 1 to 500 where each number should not repeat
+
+def check(num):
+    num=str(num)
+    tows=num.count('2')
+    fours=num.count('4')
+    eights=num.count('8')
+    return tows==fours==eights and tows>0
+def increment(N):
+    count=0
+    for num in range(1,N+1):
+        if check(num):
+            print(num)
+            count+=1
+    return count
+N=int(input())
+print(increment(N))
+o/p: 500
+248
+284
+428
+482
+4
+
+
+
+
+
+
+
+
+
