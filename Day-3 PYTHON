@@ -1,0 +1,246 @@
+PYTHON is famous for its in-built libraries
+OOPS:
+CLASS : It is blueprint of an object .It is a logical entity contains functions ,constructors ,data
+OBJECTS : It is real world entity. It is an instance of a class. It contains Behaviour ,identity, Property
+CONSTRUCTOR : It is a special method which is used to invoke the instance variable. It doesn't return any value. While creating the object constructor will be called implicitly(itself).
+              There are 3 types of constructors: 1.Default   2.Parameterized  3.Non-Parameterized
+STATIC : It is used for memory management. When we keep a variable as static then there will be no memory space allocated to that variable, and we can save the memory.
+
+
+1)
+class Student:
+    def __init__(self,name,rollno,branch,address,email):
+        self.name=name
+        self.rollno=rollno
+        self.branch=branch
+        self.address=address
+        self.email=email
+    def display(self):
+        print('name is:',self.name)
+        print('rollno is:',self.rollno)
+        print('branch is:',self.branch)
+        print('address is:',self.address)
+        print('email is:',self.email)
+s1=Student('Praneetha',535,'CSE','Hyderabad','praneetha.mandadapu@gmail.com')
+s1.display()
+
+
+
+2)Using static data
+class Student:
+    #static data
+    branch='CSE'
+    def __init__(self,name,rollno,address,email):
+        self.name=name
+        self.rollno=rollno
+        self.address=address
+        self.email=email
+    def display(self):
+        print('name is:',self.name)
+        print('rollno is:',self.rollno)
+        print('branch is:',Student.branch)
+        print('address is:',self.address)
+        print('email is:',self.email)
+        print()
+s1=Student('Praneetha',535,'Hyderabad','praneetha.mandadapu@gmail.com')
+s2=Student('Pinky',35,'Hyd','mandadapu001@gmail.com')
+s1.display()
+s2.display()
+
+
+3)Using str function instead of display function
+class Student:
+    #static data
+    branch='CSE'
+    def __init__(self,name,rollno,address,email):
+        self.name=name
+        self.rollno=rollno
+        self.address=address
+        self.email=email
+    def __str__(self):   #any obj will be converted to string
+        return f'{self.name} {self.rollno} {self.branch} {self.address} {self.email}'
+s1=Student('Praneetha',535,'Hyderabad','praneetha.mandadapu@gmail.com')
+s2=Student('Pinky',35,'Hyd','mandadapu001@gmail.com')
+print(s1)
+print(s2)
+o/p:Praneetha 535 CSE Hyderabad praneetha.mandadapu@gmail.com
+Pinky 35 CSE Hyd mandadapu001@gmail.com
+
+
+4)Sinle level Inheritence
+#Inheritance
+#SYNTAX for inheriting :  class subclass_name(Parentclass_name)
+
+class JNTU:
+    def schedule_academics():
+        print('Scheduling Academics')
+    def declare_holidays():
+        print('National and summer holidays')
+    def results():
+        print('Go to www.jntuhresults.com')
+class Sridevi(JNTU):    
+    def fees():
+        print('3rd year fees is 85k')
+obj=JNTU
+obj.schedule_academics()
+obj.declare_holidays()
+obj.results()
+oo=Sridevi
+oo.fees()
+
+
+5)abstract and non abstract methods
+from abc import ABC
+class RBIBank(ABC):
+     def intrest():   #abstract method
+         pass
+     def loan():      #Non-abstract method
+         print('Provides Home loan')
+
+class HDFC(RBIBank):
+    def intrest():
+        print('7.5% intrest')
+
+class SBI(RBIBank):
+    def intrest():
+        print('11% intrest')
+
+class AXIS(RBIBank):
+    def intrest():
+        print('9% intrest')
+
+mp=AXIS
+mp.intrest()
+mp.loan()
+rmp=RBIBank
+rmp.intrest()
+rmp.loan()
+o/p:9% intrest
+Provides Home loan
+Provides Home loan
+
+
+6)Multiple Inheritence
+from abc import ABC
+
+class Vehicle(ABC):
+    def speed():
+        pass
+    def milage():
+        pass
+    def breaks():
+        print('stop the vehicle')
+
+class Toyota(Vehicle):
+    def speed():
+        print('350 max speed')
+    def milage():
+        print('15KMPH')
+    def model():
+        print('Hight range')
+
+class Innova(Vehicle):
+    def speed():
+        print('450 max speed')
+    def milage():
+        print('12KMPH')
+    def model():
+        print('Legendry')
+obj=Toyota
+obj.speed()
+obj.milage()
+obj.model()
+obj.breaks()
+o/p:350 max speed
+15KMPH
+Hight range
+stop the vehicle
+
+
+ENCAPSULATION : Binding data and methods into single component is called Encapsulation
+Example : Class is the best example
+Why?
+advantage : Code Integration, Security
+Access Modifiers : public, private, protected 
+
+
+7)Example for Access Modifier
+class Employee:
+    def __init__(self,name,role,salary):
+        self.name=name
+        self.role=role
+        self.__salary=salary     #Private data
+    def get_salary(self):        #public method and data is private
+        return self.__salary
+    def Empdisplay(self):        #public method
+        print(self.name,self.role)
+class Company(Employee):
+    def __init__(self,cname,loc):
+        self.cname=cname
+        self.loc=loc
+    def Comdisplay(self):
+        print(self.cname,self.loc)
+    def _hiring(self):          #Protected method
+        print('Hiring the manager')
+cmp=Company('IBM','Gacchibowli')
+emp=Employee('Praneetha','Manager',100000)
+emp.Empdisplay()
+print(cmp._hiring())
+o/p:Praneetha Manager
+Hiring the manager
+None
+
+
+POLYMORPHISM : poly means many and morphism means forms
+
+8)
+class Person:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def __str__(self):
+        return f'{self.name},{self.age}'
+class Student(Person):
+    def __init__(self,name,age,roll,branch):
+        super().__init__(name,age)   #super constructor
+        self.roll=roll
+        self.branch=branch
+    def __str__(self):
+        res=super().__str__()
+        return f'{res},{self.roll},{self.branch}'
+class AnnualDay(Student):
+    def __init__(self,name,age,roll,branch,program):
+        super().__init__(name,age,roll,branch)
+        self.program=program
+    def __str__(self):
+        studetails=super().__str__()
+        return f'{studetails},{self.program}'
+obj=AnnualDay('Praneetha',20,535,'CSE','Group')
+print(obj)
+ 
+
+9)Write a program for Password validation - TECH MAHINDRA QUESTION
+s=input()
+ucount,lcount,dcount,scount=0,0,0,0
+for c in s:
+    if c.isupper():
+        ucount+=1
+    elif c.islower():
+        lcount+=1
+    elif c.isdigit():
+        dcount+=1
+    else:
+        scount+=1
+if len(s)>8 and ucount>0 and lcount>0 and dcount>0 and scount>0:
+    print('Valid')
+else:
+    print('Invalid')
+
+
+
+
+
+
+
+           
+
