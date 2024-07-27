@@ -1,0 +1,243 @@
+#Hackerrank problem
+1)
+s=7
+t=11
+a=3
+b=15
+apples=[6,5,-4]
+oranges=[9,8,-4]
+acount,ocount=0,0
+for i in apples:
+    if a+i in range(s,t+1):
+        acount+=1
+for i in oranges:
+    if b+i in range(s,t+1):
+        ocount+=1
+print(acount,ocount)
+
+
+2)
+n=2397
+m=3
+n=str(n)
+for i in n:
+    if int(i)%2==0:
+        print(int(i)+m,end='')
+    else:
+        print(int(i)*m,end='')
+
+#Swapping of two numbers
+3)
+a=10
+b=20
+a=a+b
+b=a-b
+a=a-b
+print(a,b)
+
+
+4)Printing numbers first and string next in given combined string
+s='a1b2c3d492nm45'
+s1=''
+s2=''
+for c in s:
+    if c.isdigit():
+        s1+=c
+    else:
+        s2+=c
+print(s1+s2)
+o/p:12349245abcdnm
+
+5)
+n=5
+for i in range(1,n+1):
+    print('*'*i)
+o/p:
+*
+**
+***
+****
+*****
+
+6)
+n=int(input())
+for i in range(1,n+1):
+    for j in range(i):
+        print('*',end='')
+    print( )
+o/p:3
+*
+**
+***
+
+7)
+n=int(input())
+for i in range(0,n):
+    for j in range(0,n):
+        if i==j or i+j==n-1:
+            print('*',end='')
+        else:
+            print(' ',end='')
+    print()
+o/p:
+3
+* *
+ * 
+* *
+
+8)
+n=int(input())
+for i in range(1,n+1):
+    if i==1 or i==n:
+        print('*'*n)
+    else:
+        print('*'+' '*(n-2)+'*')
+o/p:5
+*****
+*   *
+*   *
+*   *
+*****
+
+
+9)#s='1C0C1C1A0B1'
+#if
+#A in string the perform '&' operation
+#B '|' operation
+#C '^' operation
+
+
+
+s=input()
+res=int(s[0])
+for i in range(1,len(s),2):
+    if s[i]=='A':
+        res=res&int(s[i+1])
+    elif s[i]=='B':
+        res=res|int(s[i+1])
+    else:
+        res=res^int(s[i+1])
+        
+print(res)
+        
+o/p:1B1C0C1B0A1
+0
+
+
+import math
+dir(math)
+['__doc__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'cbrt', 'ceil', 'comb', 'copysign', 'cos', 'cosh', 'degrees', 'dist', 'e', 'erf', 'erfc', 'exp', 'exp2', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'isqrt', 'lcm', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'nextafter', 'perm', 'pi', 'pow', 'prod', 'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'sumprod', 'tan', 'tanh', 'tau', 'trunc', 'ulp']
+
+
+10)
+#Good Numbers
+#arr=[35,36,37]
+#res=low cube + high cube
+#low is always =1
+
+import math
+print(math.ceil(math.cbrt(35)))
+
+print(math.floor(math.cbrt(35)))
+
+
+11)
+#Good Numbers
+#arr=[35,36,37]
+#res=low cube + high cube
+#low is always =1
+
+import math
+n=[35,9,1]
+count=0
+for i in n:
+    low=1
+    high=math.ceil(i**0.3)
+    while low<high:
+        res=low**3 + high**3
+        print(i)
+        if res==i:
+            count+=1
+        low+=1
+print('The count is:',count)
+o/p:
+35
+35
+9
+The count is: 2
+
+12)
+#Good Numbers
+#arr=[35,36,37]
+#res=low cube + high cube
+#low is always =1
+
+import math
+n=list(map(int,input().split()))
+count=0
+for i in n:
+    low=1
+    high=math.ceil(i**0.3)
+    while low<high:
+        res=low**3 + high**3
+        print(i)
+        if res==i:
+            count+=1
+        if res<i:
+            low+=1
+        else:
+            high-=1
+print('The count is:',count)
+
+
+13)Give a string and print the alphabets in the string in alphabetical order --------- TECH MAHINDRA QUESTION
+s=input()
+for c in s:
+    print(c,'->',ord(c)-96)
+o/p:praneetha
+p -> 16
+r -> 18
+a -> 1
+n -> 14
+e -> 5
+e -> 5
+t -> 20
+h -> 8
+a -> 1
+
+
+Hw: 
+
+14) count Halindrome
+s=['abc','sasdad','aaaccc','tatdog','emepe']
+if not palindrome then divide it into two halves
+atleast one part must be palindrome
+count the num of palindrome
+
+s=['aba','sasdad','aaaccc','tapdog','emepe']
+count=0
+for i in s:
+        if i==i[::-1]:
+                count+=1
+        else:
+                m=len(i)//2
+                if len(i)%2==0:
+                        first=i[:m]
+                        second=i[m:]
+                        if first==first[::-1] or second==second[::-1]:
+                                count+=1
+                else:
+                        first=i[:m+1]
+                        second=i[m:]
+                        if first==first[::-1] or second==second[::-1]:
+                                count+=1
+print(count)
+o/p: 4
+
+
+
+
+
+
+    
+
