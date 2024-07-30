@@ -1,0 +1,246 @@
+1)Write a program to find the min and max values in each variable and add all the min,max values from each variable and find the difference
+n1=7823
+n2=5489
+n3=1384
+min_sum=0                                                         #min value in n1 is 2,n2 is 4,n3 is 1
+max_sum=0
+def min_check(n):                                                 #max value in n1 is 8,n2 is 9,n3 is 8                                          
+    s=str(n)
+    min=int(s[0])                                                  #sum of min values=2+4+1=7,sum of max values=8+9+8=25
+    for i in s:                                                     #difference=25-7=18
+        if int(i)<min:                                            
+            min=int(i)
+    return min
+
+def max_check(n):
+    s=str(n)
+    max=int(s[0])
+    for i in s:
+        if int(i)>max:
+            max=int(i)
+    return max
+min_sum=min_check(n1)+min_check(n2)+min_check(n3)
+max_sum=max_check(n1)+max_check(n2)+max_check(n3)
+diff=abs(min_sum-max_sum)
+print(diff)
+o/p:18
+
+
+2)#Converting binary to decimal
+#n=101011
+#1*2**0->1
+#1*2**1->2
+#0*2**2->0
+#1*2**3->8
+#0*2**4->0
+#1*2**4->32
+#add all the numbers->1+2+8+32=43
+
+n=int(input())
+sum=0
+i=0
+while n>0:
+    rem=n%10
+    pro=rem*pow(2,i)
+    sum+=pro
+    i+=1
+    n=n//10
+print(sum)
+
+3)Data structures 'DEQUEUE"
+from collections import deque
+numbers=[1,2,3,4]
+numbers=deque(numbers)
+numbers.popleft() 
+print(numbers)
+o/p:deque([2, 3, 4])   
+   
+     AND
+
+4)from collections import deque
+numbers=[1,2,3,4]
+numbers=deque(numbers)
+numbers.pop() 
+print(numbers)
+o/p:deque([1, 2, 3])
+
+
+#Important topics to cover for Placements
+->Datatypes,operators,variable,conditional statements,array,loops,patterns,collections(list,tuples,et,dict),functions,recursion,oops concept
+#string question : 
+->Check whether a string is anagram(Characters which are in s1 should also be in s2)
+Example : s1='bat'
+          s2='tab'
+        Therefore,the string is anagram
+->Palindrome
+->Reverse
+
+
+5)Check whether the string is anagram or not
+s1='tab'
+s2='bat'
+res1= sorted(s1)
+res2=sorted(s2)
+if len(s1)==len(s2) and res1==res2:
+        print('Anagram')
+else:
+        print('Not')
+
+6)#Guessing a number
+import random
+ran=random.randint(1,10)
+chances=1
+while chances<=3:
+        guess=int(input('Enter a number: '))
+        if guess==ran:
+                print('Congrats')
+                break
+        else:
+                chances+=1
+                continue
+if chances>=3:
+        print('Failed! Try next time')
+o/p:
+->Enter a number: 1
+Congrats
+->Enter a number: 4
+Enter a number: 6
+Enter a number: 7
+Failed! Try next time
+
+       AND
+
+7)#Guessing a number
+import random
+ran=random.randint(1,10)
+chances=3
+while chances>=1:
+        guess=int(input('Enter a number: '))
+        if guess==ran:
+                print('Congrats')
+                break
+        else:
+                chances-=1
+                continue
+if chances<1:
+        print('Failed! Try next time')
+
+
+8)#Couning the numbers of carries
+n1=2468
+n2=4642
+carry=0
+count=0
+while n1>0 and n2>0:
+        rem1=n1%10
+        rem2=n2%10
+        sum=rem1+rem2+carry
+        if (sum>9):
+                carry=1
+                count+=1
+        else:
+                carry=0
+        n1=n1//10
+        n2=n2//10
+print(count)
+o/p:3
+
+9)#Convert the time in 12hr format
+#time=20:34:55
+
+time='20:34:55'
+time=time.split(':')
+hrs=time[0]
+min=time[1]
+sec=time[2]
+print('Before conversion :',hrs,min,sec)
+if int(hrs)>12:
+        hrs=int(hrs)-12
+        
+print('After conversion :',hrs,min,sec)
+o/p:Before conversion : 20 34 55
+After conversion : 8:34:55
+
+
+     AND
+
+10)time='20:60:60'
+time=time.split(':')
+hrs=time[0]
+min=time[1]
+sec=time[2]
+print('Before conversion :',hrs,min,sec)
+if int(hrs)>12:
+        hrs=int(hrs)-12
+if int(min)>59:
+        hrs+=1
+        min=0
+if int(sec)>59:
+        min+=1
+        sec=0
+        
+print('After conversion :',str(hrs)+':'+str(min)+':'+str(sec))
+o/p:Before conversion : 20 60 60
+After conversion : 9:1:0
+
+       AND
+
+11)time='13:79:90'
+time=time.split(':')
+hrs=time[0]
+min=time[1]
+sec=time[2]
+if int(hrs)>12:
+        hrs=int(hrs)-12
+if int(min)>59:
+        hrs=int(hrs)+1
+        min=int(min)-60
+if int(sec)>59:
+        min=int(min)+1
+        sec=int(sec)-60
+print('After conversion :',str(hrs)+':'+str(min)+':'+str(sec))
+
+
+
+12)#Balanced and unbalanced paranthesis
+
+class StackExample:
+        def __init__(self):
+                self.stack=[]
+        def push(self,data):
+                self.stack.append(data)
+        def is_empty(self):
+                return self.stack==[]
+        def pop(self):
+                if not self.is_empty():
+                        self.stack.pop()
+                else:
+                        print('Stack underflow')
+        def display(self):
+                if not self.is_empty():
+                        for top in range(len(self.stack)-1,-1,-1):
+                                print(self.stack[top])
+                else:
+                        print('Stack is empty')
+        def peek(self):
+                if not self.is_empty():
+                        print('The peek ele:',self.stack[-1])
+                else:
+                        print('Stack is empty')
+obj=StackExample()
+obj.push(10)
+obj.pop()
+obj.push('Praneetha')
+obj.push(90)
+obj.push(40)
+obj.push(30)
+obj.pop()
+obj.push(-1)
+obj.display()
+obj.peek()
+o/p:
+-1
+40
+90
+Praneetha
+The peek ele: -1
