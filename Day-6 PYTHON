@@ -1,0 +1,124 @@
+1)#Remove duplicate words in the given string
+s='hello world hello world good morning good afternoon'
+s=s.split()
+s1=''
+for i in s:
+        if i not in s1:
+                s1=s1+i+' '
+print(s1)
+o/p:
+                
+2)#Remove duplicate words in the given string
+s='hello world hello world good morning good afternoon'
+s=s.split()
+d={}
+for i in s:
+        if i not in d:
+                d[i]=1
+        else:
+                d[i]+=1
+s1=''
+for k,v in d.items():
+        if v>=1:
+                s1+=k+' '
+print(s1)     
+
+
+3)#Next character
+s='abcdz'
+s1=''
+for i in s:
+        if ord(i)>=97 and ord(i)<122:
+                 s1+=chr(ord(i)+1)
+        else:
+                s1+=chr(ord(i)-25)
+print(s1)
+o/p:bcdeak
+
+
+4)#Print the array elements order wise
+arr=[1,1,0,1,1,0,0]
+ones=[]
+zeros=[]
+for i in arr:
+        if i==0:
+                zeros.append(i)
+        else:
+                ones.append(i)
+zeros.extend(ones)
+print(zeros)
+o/p:[0,0,0,1,1,1,1]
+
+5)#Double Pointer
+arr=[1,2,3,4,5,6]
+k=6
+count=0
+for i in range(0,len(arr)):
+        for j in range(1,len(arr)):
+                if arr[i]+arr[j]==k:
+                        count+=1
+print(count)
+
+    OR
+
+#Double Pointer
+arr=[1,2,3,4,5]
+k=6
+count=0
+f=0
+l=len(arr)-1
+while f<l:
+        if arr[f]+arr[l]==k:
+                count+=1
+        f+=1
+        l-=1
+print(count)
+
+6)#Find max value
+candles=[3,7,1,5,4,7]
+max=candles[0]
+count=0
+for i in candles:
+        if i>max:
+                max=i
+for i in candles:
+        if max==i:
+                count+=1
+print(count)
+
+
+
+7)
+arr=[1,2,3,4,5]
+arr.sort()
+min_sum=sum(arr[:len(arr)-1])
+max_sum=sum(arr[1:])
+diff=abs(min_sum-max_sum)
+print(diff)
+
+
+8)#balanced 
+s='{[([])]}'
+def check(s):
+    stack=[]
+    openings=['(','[','{']
+    brackets={'(':')',
+              '[':']',
+              '{':'}'}
+    for i in s:
+        if i in openings:
+                stack.append(i)
+        else:
+            if stack:
+                top=stack.pop()
+                if brackets[top]!=i:
+                    return 'No'
+            else:
+                return 'No'
+    if stack:
+        return 'No'
+         
+    else:
+        return 'Yes'
+s='{[([])]}'
+print(check(s))
